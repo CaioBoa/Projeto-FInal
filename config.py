@@ -11,10 +11,15 @@ HEIGHT = 500
 FPS = 60 
 
 # Tamanho sprites
+    #Personagem
 CHAR_WIDTH = 80
 CHAR_HEIGHT = 100
+    #Asteroide
 AST_WIDTH = 40
-AST_HEIGHT = 40
+AST_HEIGHT = 50
+    #Paredes
+WLL_WIDTH = 20
+WLL_HEIGHT = 70
 
 # Cores
 WHITE = (255, 255, 255)
