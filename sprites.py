@@ -1,6 +1,6 @@
 import random
 import pygame
-from config import CHAR_HEIGHT, CHAR_WIDTH, WIDTH, HEIGHT, AST_HEIGHT
+from config import CHAR_HEIGHT, CHAR_WIDTH, WIDTH, HEIGHT, AST_HEIGHT, WLL_HEIGHT
 from assets import CHARACTER, ASTEROID, WALL
 
 class character(pygame.sprite.Sprite):
@@ -55,8 +55,8 @@ class wall(pygame.sprite.Sprite):
         self.image = assets[WALL]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        randomy = random.randint(AST_HEIGHT + 5 , HEIGHT - AST_HEIGHT - 5)
-        vel = (random.randint(1,4))
+        randomy = random.randint(WLL_HEIGHT + 5 , HEIGHT - WLL_HEIGHT - 5)
+        vel = random.randint(1,4)
         self.rect.x = WIDTH - 50
 
         #falta checar umas coisas da parede(motando so o basico dela)

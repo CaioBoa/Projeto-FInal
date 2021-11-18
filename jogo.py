@@ -9,7 +9,7 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Jogo')
 
 state = INIT
-while state != QUIT:
+while state != QUIT: 
     if state == INIT:
         state = init_screen(window)
     elif state == GAME:
