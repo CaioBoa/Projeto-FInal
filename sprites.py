@@ -37,7 +37,7 @@ class asteroid(pygame.sprite.Sprite):
         randomy = rectt
         self.rect.x = WIDTH - 50
         self.rect.y = randomy
-        self.speedx = 4
+        self.speedx = 15
         self.groups = groups
         self.assets = assets
     
