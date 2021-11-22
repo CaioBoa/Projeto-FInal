@@ -20,6 +20,9 @@ AST_HEIGHT = 50
     #Paredes
 WLL_WIDTH = 20
 WLL_HEIGHT = 70
+    #Coins
+COIN_WIDTH = 30
+COIN_HEIGHT = 30
 
 # Cores
 WHITE = (255, 255, 255)
