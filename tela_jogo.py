@@ -1,7 +1,8 @@
 import pygame
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, Back_Speed
-from assets import load_assets, BACKGROUND
+from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, Back_Speed
+from assets import load_assets, BACKGROUND, BACKGROUND1
 from sprites import asteroid, character, wall, coin
+from os import path
 
 def game_screen(window):
     clock = pygame.time.Clock()
@@ -27,9 +28,12 @@ def game_screen(window):
     #Movimento do Fundo
     Bx = 0
     Bx2 = WIDTH
+    #score
     score = 0
+
     DONE = 0
     PLAYING = 1
+    
     state = PLAYING
 
     # ===== Loop principal =====
@@ -59,10 +63,10 @@ def game_screen(window):
 
         Bx -= Back_Speed
         Bx2 -= Back_Speed
-        if Bx2 == 0:
-            Bx = WIDTH
-        if Bx == 0:
-            Bx2 = WIDTH
+        if Bx <= -WIDTH:
+            Bx = WIDTH-1
+        if Bx2 <= -WIDTH:
+            Bx2 = WIDTH-1
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -89,16 +93,24 @@ def game_screen(window):
                 score += 1
 
         #contador de moedas
-        font = pygame.font.SysFont((FNT_DIR,"ARCADE_N.TTF"), 68)
+        font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 56)
         #não consegui fazer a fonte funcionar se alguém ae quiser tentar
         score_count = font.render("Score = {0}".format(score), True, (0,255,255))
 
         all_sprites.update()
 
         window.fill(BLACK)
-        window.blit(assets[BACKGROUND], (Bx, 0))
-        window.blit(assets[BACKGROUND], (Bx2, 0))
-        window.blit(score_count, (10, 10))
+        Background = assets[BACKGROUND]
+        
+        if score >= 2:
+            Background = assets[BACKGROUND1]
+        
+        window.blit(Background, (Bx, 0))
+        window.blit(Background, (Bx2, 0))
+        window.blit(score_count, (WIDTH-700, 15))
         all_sprites.draw(window)
 
         pygame.display.update()
+
+    if state == DONE:
+        return OVER
