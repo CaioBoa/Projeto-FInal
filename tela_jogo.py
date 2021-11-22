@@ -24,6 +24,9 @@ def game_screen(window):
     a = 0
     w = 0
     c = 0
+    #Movimento do Fundo
+    Bx = 0
+    Bx2 = WIDTH
     score = 0
     DONE = 0
     PLAYING = 1
@@ -47,12 +50,19 @@ def game_screen(window):
             walll = wall (groups,assets)
             all_sprites.add(walll)
             all_walls.add(walll)
-            a = 0  
+            w = 0  
         if c/2 == astro_cd:
             coinn = coin (groups,assets)
             all_sprites.add(coinn)
             all_coins.add(coinn)
-            c = 0  
+            c = 0 
+
+        Bx -= 1
+        Bx2 -= 1
+        if Bx2 == 0:
+            Bx = WIDTH
+        if Bx == 0:
+            Bx2 = WIDTH
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -80,12 +90,14 @@ def game_screen(window):
 
         #contador de moedas
         font = pygame.font.SysFont((FNT_DIR,"ARCADE_N.TTF"), 68)
+        #não consegui fazer a fonte funcionar se alguém ae quiser tentar
         score_count = font.render("Score = {0}".format(score), True, (0,255,255))
 
         all_sprites.update()
 
         window.fill(BLACK)
-        window.blit(assets[BACKGROUND], (0, 0))
+        window.blit(assets[BACKGROUND], (Bx, 0))
+        window.blit(assets[BACKGROUND], (Bx2, 0))
         window.blit(score_count, (10, 10))
         all_sprites.draw(window)
 
