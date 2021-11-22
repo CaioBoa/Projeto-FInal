@@ -6,8 +6,8 @@ SND_DIR = path.join(path.dirname(__file__), 'assets', 'snd')
 FNT_DIR = path.join(path.dirname(__file__), 'assets', 'font')
 
 # Configurações gerais
-WIDTH = 800
-HEIGHT = 500
+WIDTH = 1255
+HEIGHT = 640
 FPS = 60 
 
 # Tamanho sprites
@@ -37,4 +37,5 @@ YELLOW = (255, 255, 0)
 # Estados do jogo
 INIT = 0
 GAME = 1
-QUIT = 2
+OVER = 2
+QUIT = 3

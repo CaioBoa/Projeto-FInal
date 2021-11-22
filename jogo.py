@@ -1,7 +1,8 @@
 import pygame
-from config import WIDTH, HEIGHT, INIT, GAME, QUIT
+from config import WIDTH, HEIGHT, INIT, GAME, QUIT, OVER
 from tela_inicial import init_screen
 from tela_jogo import game_screen
+from tela_gameover import over_screen
 
 
 pygame.init()
@@ -13,7 +14,9 @@ while state != QUIT:
     if state == INIT:
         state = init_screen(window)
     elif state == GAME:
-        state = game_screen(window)
+        state = game_screen(window) 
+    elif state == OVER:
+        state = over_screen(window)
     else:
         state = QUIT
 

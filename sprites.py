@@ -55,7 +55,7 @@ class wall(pygame.sprite.Sprite):
         self.image = assets[WALL]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        randomy = random.randint(WLL_HEIGHT + 5 , HEIGHT - WLL_HEIGHT - 5)
+        randomy = random.randint(WLL_HEIGHT, HEIGHT - WLL_HEIGHT - 5)
         vel = Back_Speed
         self.rect.x = WIDTH - 50
 
