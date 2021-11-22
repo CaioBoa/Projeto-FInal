@@ -77,11 +77,10 @@ def game_screen(window):
             hits_coin = pygame.sprite.spritecollide(player, all_coins, True, pygame.sprite.collide_mask)
             if len(hits_coin) > 0:
                 score += 1
-                hits_wall = []
 
         #contador de moedas
-        font = pygame.font.SysFont((FNT_DIR,"ARCADE_N.TTF"), 48)
-        score_count = font.render("Score = {0}".format(score), True, (0,0,255))
+        font = pygame.font.SysFont((FNT_DIR,"ARCADE_N.TTF"), 68)
+        score_count = font.render("Score = {0}".format(score), True, (0,255,255))
 
         all_sprites.update()
 
