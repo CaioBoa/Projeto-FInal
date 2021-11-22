@@ -1,5 +1,5 @@
 import pygame
-from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR
+from config import FPS, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, Back_Speed
 from assets import load_assets, BACKGROUND
 from sprites import asteroid, character, wall, coin
 
@@ -42,7 +42,7 @@ def game_screen(window):
         c += 1
         astro_cd = 120
         if a == astro_cd:
-            astro = asteroid(groups,assets)
+            astro = asteroid(groups,assets,player.rect.y)
             all_sprites.add(astro)
             all_astros.add(astro)
             a = 0
@@ -57,8 +57,8 @@ def game_screen(window):
             all_coins.add(coinn)
             c = 0 
 
-        Bx -= 1
-        Bx2 -= 1
+        Bx -= Back_Speed
+        Bx2 -= Back_Speed
         if Bx2 == 0:
             Bx = WIDTH
         if Bx == 0:

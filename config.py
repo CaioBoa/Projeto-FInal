@@ -23,6 +23,8 @@ WLL_HEIGHT = 70
     #Coins
 COIN_WIDTH = 30
 COIN_HEIGHT = 30
+    #Background Speed
+Back_Speed = 2
 
 # Cores
 WHITE = (255, 255, 255)

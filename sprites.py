@@ -1,6 +1,6 @@
 import random
 import pygame
-from config import CHAR_HEIGHT, CHAR_WIDTH, WIDTH, HEIGHT, AST_HEIGHT, WLL_HEIGHT
+from config import CHAR_HEIGHT, CHAR_WIDTH, WIDTH, HEIGHT, AST_HEIGHT, WLL_HEIGHT, Back_Speed
 from assets import CHARACTER, ASTEROID, WALL, COIN
 
 class character(pygame.sprite.Sprite):
@@ -28,16 +28,16 @@ class character(pygame.sprite.Sprite):
             self.speedy = -3
 
 class asteroid(pygame.sprite.Sprite):
-    def __init__(self,groups,assets):
+    def __init__(self,groups,assets,rectt):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = assets[ASTEROID]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        randomy = random.randint(AST_HEIGHT + 5 , HEIGHT - AST_HEIGHT - 5)
+        randomy = rectt
         self.rect.x = WIDTH - 50
         self.rect.y = randomy
-        self.speedx = 2
+        self.speedx = 4
         self.groups = groups
         self.assets = assets
     
@@ -56,7 +56,7 @@ class wall(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = random.randint(WLL_HEIGHT + 5 , HEIGHT - WLL_HEIGHT - 5)
-        vel = random.randint(1,4)
+        vel = Back_Speed
         self.rect.x = WIDTH - 50
 
         #falta checar umas coisas da parede(motando so o basico dela)
@@ -79,10 +79,9 @@ class coin(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = random.randint(WLL_HEIGHT + 5 , HEIGHT - WLL_HEIGHT - 5)
-        vel = random.randint(1,4)
+        vel = 2
         self.rect.x = WIDTH - 50
 
-        #falta checar umas coisas da parede(motando so o basico dela)
         self.rect.y = randomy
         self.speedx = vel
         self.groups = groups
