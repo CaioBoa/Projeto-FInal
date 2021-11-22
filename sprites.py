@@ -94,3 +94,4 @@ class coin(pygame.sprite.Sprite):
         if self.rect.x < 0:
             self.kill()
 
+
