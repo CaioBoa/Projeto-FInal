@@ -11,7 +11,7 @@ COIN = "coin"
 def load_assets():
     assets = {}
     #sprites
-    assets[BACKGROUND] = pygame.image.load(path.join(IMG_DIR,"background.jpg")).convert()
+    assets[BACKGROUND] = pygame.image.load(path.join(IMG_DIR,"f1_flo.png")).convert()
     assets[BACKGROUND] = pygame.transform.scale(assets[BACKGROUND],(WIDTH,HEIGHT))
     assets[CHARACTER] = pygame.image.load(path.join(IMG_DIR,"jetpack.png")).convert_alpha()
     assets[CHARACTER] = pygame.transform.scale(assets[CHARACTER],(CHAR_WIDTH,CHAR_HEIGHT))

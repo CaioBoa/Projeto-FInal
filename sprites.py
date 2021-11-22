@@ -10,7 +10,7 @@ class character(pygame.sprite.Sprite):
         self.image = assets[CHARACTER]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.x = WIDTH / 2 - CHAR_WIDTH / 2
+        self.rect.x = 10
         self.rect.y = HEIGHT - CHAR_HEIGHT 
         self.speedy = 0
         self.groups = groups
