@@ -44,18 +44,18 @@ def game_screen(window):
         a += 1
         w += 1
         c += 1
-        astro_cd = 120
-        if a == astro_cd:
+        astro_cd = 60
+        if a/2 == astro_cd:
             astro = asteroid(groups,assets,player.rect.y)
             all_sprites.add(astro)
             all_astros.add(astro)
             a = 0
-        if w/2 == astro_cd:
+        if w/4 == astro_cd:
             walll = wall (groups,assets)
             all_sprites.add(walll)
             all_walls.add(walll)
             w = 0  
-        if c/2 == astro_cd:
+        if c == astro_cd:
             coinn = coin (groups,assets)
             all_sprites.add(coinn)
             all_coins.add(coinn)
@@ -101,7 +101,7 @@ def game_screen(window):
 
         window.fill(BLACK)
         Background = assets[BACKGROUND]
-        
+
         if score >= 2:
             Background = assets[BACKGROUND1]
         

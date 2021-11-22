@@ -15,7 +15,7 @@ def load_assets():
     assets[BACKGROUND] = pygame.image.load(path.join(IMG_DIR,"f1_flo.png")).convert()
     assets[BACKGROUND] = pygame.transform.scale(assets[BACKGROUND],(WIDTH,HEIGHT))
     assets[BACKGROUND1] = pygame.image.load(path.join(IMG_DIR,"f2_esp.png")).convert()
-    assets[BACKGROUND1] = pygame.transform.scale(assets[BACKGROUND],(WIDTH,HEIGHT))
+    assets[BACKGROUND1] = pygame.transform.scale(assets[BACKGROUND1],(WIDTH,HEIGHT))
     assets[CHARACTER] = pygame.image.load(path.join(IMG_DIR,"jetpack.png")).convert_alpha()
     assets[CHARACTER] = pygame.transform.scale(assets[CHARACTER],(CHAR_WIDTH,CHAR_HEIGHT))
     assets[ASTEROID] = pygame.image.load(path.join(IMG_DIR,"Missel.png")).convert_alpha()
