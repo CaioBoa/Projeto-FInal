@@ -3,6 +3,7 @@ from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, Back_S
 from assets import load_assets, BACKGROUND, BACKGROUND1
 from sprites import asteroid, character, wall, coin
 from os import path
+from cursors import cursors
 
 def game_screen(window):
     clock = pygame.time.Clock()
@@ -40,6 +41,9 @@ def game_screen(window):
     while state != DONE:
         clock.tick(FPS)
 
+        mouse = pygame.mouse.get_pos()
+        if 0 < mouse[0] < WIDTH and 0 < mouse[1] < HEIGHT:
+            pygame.mouse.set_cursor(cursors[2])
         #gerador de asteróides
         a += 1
         w += 1

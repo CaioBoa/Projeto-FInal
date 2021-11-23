@@ -1,6 +1,7 @@
 import pygame
 from os import path
 from config import IMG_DIR, BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT
+from cursors import cursors
 
 def init_screen(screen):
     clock = pygame.time.Clock()
@@ -12,6 +13,10 @@ def init_screen(screen):
     running = True
     while running:
         mouse = pygame.mouse.get_pos()
+        if ButtomD[0] <= mouse[0] <= ButtomD[1] and ButtomD[2] <= mouse[1] <= ButtomD[3]:
+            pygame.mouse.set_cursor(cursors[0])
+        else:
+            pygame.mouse.set_cursor(cursors[2])
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
