@@ -94,7 +94,6 @@ def game_screen(window):
 
         #contador de moedas
         font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 56)
-        #não consegui fazer a fonte funcionar se alguém ae quiser tentar
         score_count = font.render("Score = {0}".format(score), True, (0,255,255))
 
         all_sprites.update()
@@ -113,4 +112,4 @@ def game_screen(window):
         pygame.display.update()
 
     if state == DONE:
-        return OVER
+        return (OVER, score)
