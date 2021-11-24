@@ -10,8 +10,8 @@ def game_screen(window):
     clock = pygame.time.Clock()
     assets = load_assets()
         #teste som
-    game_sound = pygame.mixer.Sound(path.join(SND_DIR,"FORSDF.mp3"))
-    dmg_sound = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
+    coin_sound = assets["sound_coin"]
+    dmg_sound = assets["sound_dmg"]
 
     all_sprites = pygame.sprite.Group()
     all_astros = pygame.sprite.Group()
@@ -40,16 +40,20 @@ def game_screen(window):
     PLAYING = 1
     
     state = PLAYING
+    pygame.mixer.music.load(path.join(SND_DIR,"FORSDF.mp3")) 
+    pygame.mixer.music.set_volume(0.3)
+    pygame.mixer.music.play(loops=-1)
 
     # ===== Loop principal =====
     while state != DONE:
         #game_sound.play()
-
+        
         clock.tick(FPS)
-
         mouse = pygame.mouse.get_pos()
+
         if 0 < mouse[0] < WIDTH and 0 < mouse[1] < HEIGHT:
             pygame.mouse.set_cursor(cursors[2])
+
         #gerador de asteróides
         a += 1
         w += 1
@@ -105,6 +109,7 @@ def game_screen(window):
             hits_coin = pygame.sprite.spritecollide(player, all_coins, True, pygame.sprite.collide_mask)
             if len(hits_coin) > 0:
                 score += 1
+                coin_sound.play()
 
         #contador de moedas
         font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 56)
@@ -117,7 +122,9 @@ def game_screen(window):
 
         if score >= 2:
             Background = assets[BACKGROUND1]
-        
+            pygame.mixer.music.load(path.join(SND_DIR,"cidadeSDF.mp3"))
+            pygame.mixer.music.set_volume(0.3)
+
         window.blit(Background, (Bx, 0))
         window.blit(Background, (Bx2, 0))
         window.blit(score_count, (WIDTH-700, 15))
