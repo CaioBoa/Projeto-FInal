@@ -1,7 +1,7 @@
 import pygame
 import time
 from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, SND_DIR, Back_Speed
-from assets import load_assets, BACKGROUND, BACKGROUND1
+from assets import SOUND_COIN, SOUND_DMG, load_assets, BACKGROUND, BACKGROUND1
 from sprites import asteroid, character, wall, coin
 from os import path
 from cursors import cursors
@@ -9,9 +9,6 @@ from cursors import cursors
 def game_screen(window):
     clock = pygame.time.Clock()
     assets = load_assets()
-        #teste som
-    game_sound = pygame.mixer.Sound(path.join(SND_DIR,"FORSDF.mp3"))
-    dmg_sound = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
 
     all_sprites = pygame.sprite.Group()
     all_astros = pygame.sprite.Group()
@@ -93,17 +90,20 @@ def game_screen(window):
             hits_astro = pygame.sprite.spritecollide(player, all_astros, True, pygame.sprite.collide_mask)
             if len(hits_astro) > 0:
                 #som dano
-                dmg_sound.play()
+                assets[SOUND_DMG].play()
                 player.kill()
-
-                
                 state = DONE
+
             hits_wall = pygame.sprite.spritecollide(player, all_walls, True, pygame.sprite.collide_mask)
             if len(hits_wall) > 0:
+                #som dano
+                assets[SOUND_DMG].play()
                 player.kill()
                 state = DONE
+
             hits_coin = pygame.sprite.spritecollide(player, all_coins, True, pygame.sprite.collide_mask)
             if len(hits_coin) > 0:
+                assets[SOUND_COIN].play()
                 score += 1
 
         #contador de moedas

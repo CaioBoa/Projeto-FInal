@@ -15,8 +15,6 @@ def init_screen(screen):
     ButtomD = (130,640,240,375)
 
     #carrega som
-    #menu_sound = pygame.mixer.Sound(path.join(SND_DIR,"cidadeSDF.mp3"))
-    
     
     running = True
     pygame.mixer.music.play(loops=-1)
