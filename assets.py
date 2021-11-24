@@ -12,6 +12,8 @@ SOUND_DMG = "sound_dmg"
 SOUND_COIN = "sound_coin"
 
 
+
+
 def load_assets():
     assets = {}
     
