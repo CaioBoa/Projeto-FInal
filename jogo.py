@@ -1,5 +1,4 @@
 import pygame
-from assets import SOUND_FOR, SOUND_DMG,SOUND_CITY
 from config import WIDTH, HEIGHT, INIT, GAME, QUIT, OVER
 from tela_inicial import init_screen
 from tela_jogo import game_screen

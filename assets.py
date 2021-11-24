@@ -8,9 +8,9 @@ CHARACTER = "character"
 ASTEROID = "asteroid"
 WALL = "wall"
 COIN = "coin"
-SOUND_CITY = "sound_city"
 SOUND_DMG = "sound_dmg"
-SOUND_FOR = "sound_for"
+SOUND_COIN = "sound_coin"
+
 
 def load_assets():
     assets = {}
@@ -28,11 +28,11 @@ def load_assets():
     assets[WALL] = pygame.transform.scale(assets[WALL],(WLL_WIDTH,WLL_HEIGHT))
     assets[COIN] = pygame.image.load(path.join(IMG_DIR,"coin.png")).convert_alpha()
     assets[COIN] = pygame.transform.scale(assets[COIN],(COIN_WIDTH,COIN_HEIGHT))
-    pygame.mixer.music.load(path.join(SND_DIR,"cidadeSDF.mp3"))
-    #assets[SOUND_FOR] = pygame.mixer.music(path.join(SND_DIR,"FORSDF.mp3")) 
-    pygame.mixer.music.set_volume(0.3)
-    assets[SOUND_DMG] = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
-    assets[SOUND_DMG].set_volume(0.3)
 
+    #sounds
+    assets[SOUND_DMG] = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
+    pygame.mixer.Sound.set_volume(assets[SOUND_DMG],0.3)
+    assets[SOUND_COIN] = pygame.mixer.Sound(path.join(SND_DIR,"coin.mp3"))
+    pygame.mixer.Sound.set_volume(assets[SOUND_COIN],0.3)
     
     return assets
