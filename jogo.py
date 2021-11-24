@@ -1,10 +1,14 @@
 import pygame
+from assets import SOUND_FOR, SOUND_DMG,SOUND_CITY
 from config import WIDTH, HEIGHT, INIT, GAME, QUIT, OVER
 from tela_inicial import init_screen
 from tela_jogo import game_screen
 from tela_gameover import over_screen
 
 pygame.init()
+pygame.mixer.init()
+
+
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Jogo')
 
@@ -12,6 +16,7 @@ state = INIT
 while state != QUIT: 
     if state == INIT:
         state = init_screen(window)
+        
     elif state == GAME:
         game_func = game_screen(window)
         state = game_func[0]

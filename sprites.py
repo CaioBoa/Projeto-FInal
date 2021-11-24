@@ -26,6 +26,7 @@ class character(pygame.sprite.Sprite):
             self.rect.y = HEIGHT - CHAR_HEIGHT
         if self.rect.y < HEIGHT - CHAR_HEIGHT and self.speedy == 0:
             self.speedy = -3
+    
 
 class asteroid(pygame.sprite.Sprite):
     def __init__(self,groups,assets,rectt):

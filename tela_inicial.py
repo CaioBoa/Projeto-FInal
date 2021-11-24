@@ -1,17 +1,28 @@
 import pygame
 from os import path
-from config import IMG_DIR, BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT
+from assets import SOUND_CITY, load_assets
+from config import IMG_DIR, SND_DIR, BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT
 from cursors import cursors
 
+
+
 def init_screen(screen):
+    assets = load_assets()
     clock = pygame.time.Clock()
     background = pygame.image.load(path.join(IMG_DIR,"Início Jogo.png")).convert()
     background = pygame.transform.scale(background,(WIDTH,HEIGHT))
     background_rect = background.get_rect()
     ButtomD = (130,640,240,375)
 
+    #carrega som
+    #menu_sound = pygame.mixer.Sound(path.join(SND_DIR,"cidadeSDF.mp3"))
+    
+    
     running = True
+    pygame.mixer.music.play(loops=-1)
     while running:
+        #pygame.mixer.music.set_volume(0.3)
+        
         mouse = pygame.mouse.get_pos()
         if ButtomD[0] <= mouse[0] <= ButtomD[1] and ButtomD[2] <= mouse[1] <= ButtomD[3]:
             pygame.mouse.set_cursor(cursors[0])
@@ -24,8 +35,11 @@ def init_screen(screen):
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                  if ButtomD[0] <= mouse[0] <= ButtomD[1] and ButtomD[2] <= mouse[1] <= ButtomD[3]:
+                    #pygame.mixer.music.stop()
                     state = GAME
                     running = False
+
+
 
         screen.fill(BLACK)
         screen.blit(background,background_rect)

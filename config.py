@@ -2,7 +2,7 @@ from os import path
 
 # Caminho para as pastas de som, imagem e fonte
 IMG_DIR = path.join(path.dirname(__file__), 'assets', 'img')
-SND_DIR = path.join(path.dirname(__file__), 'assets', 'snd')
+SND_DIR = path.join(path.dirname(__file__), 'assets', 'msc')
 FNT_DIR = path.join(path.dirname(__file__), 'assets', 'font')
 
 # Configurações gerais

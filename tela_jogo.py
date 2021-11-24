@@ -1,5 +1,6 @@
 import pygame
-from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, Back_Speed
+import time
+from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, SND_DIR, Back_Speed
 from assets import load_assets, BACKGROUND, BACKGROUND1
 from sprites import asteroid, character, wall, coin
 from os import path
@@ -8,6 +9,9 @@ from cursors import cursors
 def game_screen(window):
     clock = pygame.time.Clock()
     assets = load_assets()
+        #teste som
+    game_sound = pygame.mixer.Sound(path.join(SND_DIR,"FORSDF.mp3"))
+    dmg_sound = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
 
     all_sprites = pygame.sprite.Group()
     all_astros = pygame.sprite.Group()
@@ -39,6 +43,8 @@ def game_screen(window):
 
     # ===== Loop principal =====
     while state != DONE:
+        #game_sound.play()
+
         clock.tick(FPS)
 
         mouse = pygame.mouse.get_pos()
@@ -86,7 +92,11 @@ def game_screen(window):
         if state == PLAYING:
             hits_astro = pygame.sprite.spritecollide(player, all_astros, True, pygame.sprite.collide_mask)
             if len(hits_astro) > 0:
+                #som dano
+                dmg_sound.play()
                 player.kill()
+
+                
                 state = DONE
             hits_wall = pygame.sprite.spritecollide(player, all_walls, True, pygame.sprite.collide_mask)
             if len(hits_wall) > 0:

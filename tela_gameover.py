@@ -34,7 +34,7 @@ def over_screen(screen):
         
         font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 180)
         #vou pedir ajuda do professor pra conseguir importar o score
-        final_score = font.render("{0}".format("5"), True, (0,0,0))
+        final_score = font.render("{0}".format('5'), True, (0,0,0))
         screen.fill(BLACK)
         screen.blit(background,background_rect)
         screen.blit(final_score,(780,285))
