@@ -100,14 +100,18 @@ def game_screen(window):
             if len(hits_astro) > 0:
                 #som dano
                 dmg_sound.play()
+                
                 player.kill()
+                
                 state = DONE
 
             hits_wall = pygame.sprite.spritecollide(player, all_walls, True, pygame.sprite.collide_mask)
             if len(hits_wall) > 0:
                 #som dano
-                assets[SOUND_DMG].play()
+                dmg_sound.play()
+                
                 player.kill()
+                
                 state = DONE
 
             hits_coin = pygame.sprite.spritecollide(player, all_coins, True, pygame.sprite.collide_mask)
@@ -127,7 +131,7 @@ def game_screen(window):
         if score >= 2:
             Background = assets[BACKGROUND1]
             if u == 0:
-                pygame.mixer.music.load(path.join(SND_DIR,"y2meta.com - Space (Copyright Free) [8bit Music] (128 kbps).mp3")) 
+                pygame.mixer.music.load(path.join(SND_DIR,"space.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 u += 1
@@ -142,4 +146,5 @@ def game_screen(window):
         pygame.display.update()
 
     if state == DONE:
+        
         return (OVER, score)
