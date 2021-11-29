@@ -7,6 +7,7 @@ from os import path
 from cursors import cursors
 
 def game_screen(window):
+    u = 0
     clock = pygame.time.Clock()
     assets = load_assets()
 
@@ -122,11 +123,16 @@ def game_screen(window):
 
         window.fill(BLACK)
         Background = assets[BACKGROUND]
-
+        
         if score >= 2:
             Background = assets[BACKGROUND1]
-            pygame.mixer.music.load(path.join(SND_DIR,"cidadeSDF.mp3"))
-            pygame.mixer.music.set_volume(0.3)
+            if u == 0:
+                pygame.mixer.music.load(path.join(SND_DIR,"y2meta.com - Space (Copyright Free) [8bit Music] (128 kbps).mp3")) 
+                pygame.mixer.music.play()
+                pygame.mixer.music.set_volume(1)
+                u += 1
+            
+            
 
         window.blit(Background, (Bx, 0))
         window.blit(Background, (Bx2, 0))
