@@ -33,7 +33,7 @@ def load_assets():
 
     #sounds
     assets[SOUND_DMG] = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
-    pygame.mixer.Sound.set_volume(assets[SOUND_DMG],0.3)
+    pygame.mixer.Sound.set_volume(assets[SOUND_DMG],0.5)
     assets[SOUND_COIN] = pygame.mixer.Sound(path.join(SND_DIR,"coin.mp3"))
     pygame.mixer.Sound.set_volume(assets[SOUND_COIN],0.3)
     
