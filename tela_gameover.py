@@ -1,10 +1,10 @@
 import pygame
 from os import path
-from config import IMG_DIR, BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT
+from config import IMG_DIR, BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT,SND_DIR
 from config import FNT_DIR
 from cursors import cursors
 
-def over_screen(screen):
+def over_screen(screen,score):
     clock = pygame.time.Clock()
     background = pygame.image.load(path.join(IMG_DIR,"Game Over.png")).convert()
     background = pygame.transform.scale(background,(WIDTH,HEIGHT))
@@ -13,6 +13,12 @@ def over_screen(screen):
     ButtomE = (910,1150,560,610)
 
     running = True
+
+    pygame.mixer.music.load(path.join(SND_DIR,"endgame.mp3"))
+    pygame.mixer.music.set_volume(0.3)
+    pygame.mixer.music.play(loops=-1)
+
+    pygame.time.delay(1500)
     while running:
         clock.tick(FPS)
         mouse = pygame.mouse.get_pos()
@@ -34,7 +40,7 @@ def over_screen(screen):
         
         font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 180)
         #vou pedir ajuda do professor pra conseguir importar o score
-        final_score = font.render("{0}".format("5"), True, (0,0,0))
+        final_score = font.render("{0}".format(score), True, (0,0,0))
         screen.fill(BLACK)
         screen.blit(background,background_rect)
         screen.blit(final_score,(780,285))

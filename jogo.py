@@ -12,6 +12,7 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Jogo')
 
 state = INIT
+score=0
 while state != QUIT: 
     if state == INIT:
         state = init_screen(window)
@@ -21,7 +22,7 @@ while state != QUIT:
         state = game_func[0]
         score = game_func[1]
     elif state == OVER:
-        state = over_screen(window)
+        state = over_screen(window,score)
     else:
         state = QUIT
 
