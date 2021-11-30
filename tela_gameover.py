@@ -38,15 +38,17 @@ def over_screen(screen,score):
                     state = QUIT
                     running = False
         
-        font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 180)
+        font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 170)
         #vou pedir ajuda do professor pra conseguir importar o score
         final_score = font.render("{0}".format(score), True, (0,0,0))
         screen.fill(BLACK)
         screen.blit(background,background_rect)
         if score < 10:
-            screen.blit(final_score,(780,285))
-        elif score >= 10:
-            screen.blit(final_score,(680,285))
+            screen.blit(final_score,(800,285))
+        elif score >= 10 and score < 100 :
+            screen.blit(final_score,(700,285))
+        elif score >= 100:
+            screen.blit(final_score,(610,285))
         pygame.display.update()
 
     return state

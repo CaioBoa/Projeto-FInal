@@ -29,7 +29,7 @@ class character(pygame.sprite.Sprite):
     
 
 class asteroid(pygame.sprite.Sprite):
-    def __init__(self,groups,assets,rectt):
+    def __init__(self,groups,assets,rectt,speed):
         pygame.sprite.Sprite.__init__(self)
 
         self.image = assets[ASTEROID]
@@ -38,7 +38,7 @@ class asteroid(pygame.sprite.Sprite):
         randomy = rectt
         self.rect.x = WIDTH - 50
         self.rect.y = randomy
-        self.speedx = 15
+        self.speedx = speed
         self.groups = groups
         self.assets = assets
     
