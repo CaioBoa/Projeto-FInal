@@ -1,7 +1,7 @@
 import pygame
 import time
 from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, SND_DIR, Back_Speed
-from assets import SOUND_COIN, SOUND_DMG, load_assets, BACKGROUND, BACKGROUND1
+from assets import SOUND_COIN, SOUND_DMG, load_assets, BACKGROUND, BACKGROUND1, BACKGROUND3, BACKGROUND2
 from sprites import asteroid, character, wall, coin
 from os import path
 from cursors import cursors
@@ -52,7 +52,7 @@ def game_screen(window):
         
         clock.tick(FPS)
         mouse = pygame.mouse.get_pos()
-
+        
         if 0 < mouse[0] < WIDTH and 0 < mouse[1] < HEIGHT:
             pygame.mouse.set_cursor(cursors[2])
 
@@ -135,7 +135,20 @@ def game_screen(window):
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 u += 1
-            
+        if score >= 5:
+            Background = assets[BACKGROUND2]
+            if u == 1:
+                pygame.mixer.music.load(path.join(SND_DIR,"desert.mp3")) 
+                pygame.mixer.music.play()
+                pygame.mixer.music.set_volume(1)
+                u += 1
+        if score >= 10:
+            Background = assets[BACKGROUND3]
+            if u == 2:
+                pygame.mixer.music.load(path.join(SND_DIR,"pink_soldiers.mp3")) 
+                pygame.mixer.music.play()
+                pygame.mixer.music.set_volume(1)
+                u += 1
             
 
         window.blit(Background, (Bx, 0))
