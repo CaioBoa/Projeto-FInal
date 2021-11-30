@@ -43,7 +43,10 @@ def over_screen(screen,score):
         final_score = font.render("{0}".format(score), True, (0,0,0))
         screen.fill(BLACK)
         screen.blit(background,background_rect)
-        screen.blit(final_score,(780,285))
+        if score < 10:
+            screen.blit(final_score,(780,285))
+        elif score >= 10:
+            screen.blit(final_score,(680,285))
         pygame.display.update()
 
     return state
