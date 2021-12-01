@@ -12,11 +12,13 @@ Para jogar, execute o arquivo 'jogo.py'.
 - Pedro Henrique Rizo Colpas
 - Caio Ortega Bôa
 - Leonardo do Santos Alves  
-\
 \ 
+\ 
+
 #### Referencias:
 - https://www.pygame.org/docs/  
-\
 \ 
+\ 
+
 Veja uma prévia do jogo em:
 - https://youtu.be/_QJc7uwdPd8
