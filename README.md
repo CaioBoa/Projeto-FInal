@@ -6,17 +6,17 @@ Controle Jetpack Guy e o leve através de diversos desafios, evitando perigos e 
 Nosso jogo foi inspirado pelo popular jogo mobile 'JETPACK JOYRIDE', e foi construido utilizando a biblioteca 'Pygame'.
 
 Para jogar, execute o arquivo 'jogo.py'.
-
-
+ 
+ 
 Veja uma prévia do jogo em:
     https://youtu.be/_QJc7uwdPd8
-    
+
+
 #### Grupo:
 - Pedro Henrique Rizo Colpas
 - Caio Ortega Bôa
 - Leonardo do Santos Alves
 
-como jogar
-descricao
-referencia
-biblioteca
+
+#### Referencias:
+- https://www.pygame.org/docs/
