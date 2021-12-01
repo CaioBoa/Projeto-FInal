@@ -1,6 +1,6 @@
 import random
 import pygame
-from config import CHAR_HEIGHT, CHAR_WIDTH, WIDTH, HEIGHT, AST_HEIGHT, WLL_HEIGHT, Back_Speed
+from config import CHAR_HEIGHT, WIDTH, HEIGHT, WLL_HEIGHT, Back_Speed
 from assets import CHARACTER, ASTEROID, WALL, COIN
 
 class character(pygame.sprite.Sprite):

@@ -1,7 +1,6 @@
 import pygame
-import time
-from config import FPS, OVER, WIDTH, HEIGHT, BLACK, YELLOW, RED, FNT_DIR, SND_DIR, Back_Speed
-from assets import SOUND_COIN, SOUND_DMG, load_assets, BACKGROUND, BACKGROUND1, BACKGROUND3, BACKGROUND2
+from config import FPS, OVER, WIDTH, HEIGHT, BLACK, FNT_DIR, SND_DIR, Back_Speed
+from assets import load_assets, BACKGROUND, BACKGROUND1, BACKGROUND3, BACKGROUND2
 from sprites import asteroid, character, wall, coin
 from os import path
 from cursors import cursors
