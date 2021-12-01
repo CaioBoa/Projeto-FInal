@@ -8,16 +8,15 @@ Nosso jogo foi inspirado pelo popular jogo mobile 'JETPACK JOYRIDE', e foi const
 Para jogar, execute o arquivo 'jogo.py'.  
 #  
 \
+
 #### Grupo:
 - Pedro Henrique Rizo Colpas
 - Caio Ortega Bôa
 - Leonardo do Santos Alves  
 \
-\
 
 #### Referencias:
 - https://www.pygame.org/docs/  
-\
 \
 
 Veja uma prévia do jogo em:
