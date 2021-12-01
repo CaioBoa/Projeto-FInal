@@ -1,7 +1,16 @@
 # Projeto Final DesSoft
+## Jetpack Guy - A pixelated game
 
-Grupo:
+Controle Jetpack Guy e o leve através de diversos desafios, evitando perigos e desviando de obstáculos enquanto tenta coletar a maior quantidade de moedas possíveis!
 
+Nosso jogo foi inspirado pelo popular jogo mobile 'JETPACK JOYRIDE', e foi construido utilizando a biblioteca 'Pygame'.
+
+#### Grupo:
 - Pedro Henrique Rizo Colpas
 - Caio Ortega Bôa
 - Leonardo do Santos Alves
+
+como jogar
+descricao
+referencia
+biblioteca
