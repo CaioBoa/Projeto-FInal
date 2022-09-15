@@ -1,6 +1,6 @@
 import pygame
 from config import FPS, OVER, WIDTH, HEIGHT, BLACK, FNT_DIR, SND_DIR, Back_Speed
-from assets import load_assets, BACKGROUND, BACKGROUND1, BACKGROUND3, BACKGROUND2
+from assets import load_assets
 from sprites import asteroid, character, wall, coin
 from os import path
 from cursors import cursors
@@ -34,8 +34,6 @@ def game_screen(window):
     #Movimento do Fundo
     Bx = 0
     Bx2 = WIDTH
-    #score
-    score = 0
     #missile_speed
     missile_speed = 10
     #guide count
@@ -52,6 +50,7 @@ def game_screen(window):
     # ===== Loop principal =====
     while state != DONE:
         #game_sound.play()
+        score = player.getScore()
         
         clock.tick(FPS)
 
@@ -126,7 +125,7 @@ def game_screen(window):
 
             hits_coin = pygame.sprite.spritecollide(player, all_coins, True, pygame.sprite.collide_mask)
             if len(hits_coin) > 0:
-                score += 1
+                player.plusScore()
                 coin_sound.play()
 
         #contador de moedas
@@ -136,10 +135,10 @@ def game_screen(window):
         all_sprites.update()
 
         window.fill(BLACK)
-        Background = assets[BACKGROUND]
+        Background = assets["background"]
         
         if score >= 5:
-            Background = assets[BACKGROUND1]
+            Background = assets["background1"]
             missile_speed = 15
             missile_cd = 150
             wall_cd = 170
@@ -149,7 +148,7 @@ def game_screen(window):
                 pygame.mixer.music.set_volume(1)
                 u += 1
         if score >= 20:
-            Background = assets[BACKGROUND2]
+            Background = assets["background2"]
             missile_speed = 20
             missile_cd = 120
             wall_cd = 130
@@ -159,7 +158,7 @@ def game_screen(window):
                 pygame.mixer.music.set_volume(1)
                 u += 1
         if score >= 100:
-            Background = assets[BACKGROUND3]
+            Background = assets["background3"]
             window.blit(score_count, (WIDTH-700, 15))
             missile_speed = 40
             missile_cd = 60
@@ -188,4 +187,4 @@ def game_screen(window):
 
     if state == DONE:
         
-        return (OVER, score)
+        return (OVER, player)

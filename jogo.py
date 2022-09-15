@@ -15,14 +15,13 @@ state = INIT
 score=0
 while state != QUIT: 
     if state == INIT:
-        state = init_screen(window)
-        
+        state = init_screen(window)    
     elif state == GAME:
         game_func = game_screen(window)
         state = game_func[0]
-        score = game_func[1]
+        player = game_func[1]
     elif state == OVER:
-        state = over_screen(window,score)
+        state = over_screen(window, player)
     else:
         state = QUIT
 

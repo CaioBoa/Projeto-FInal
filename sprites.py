@@ -1,13 +1,14 @@
 import random
+from tkinter import scrolledtext
 import pygame
 from config import CHAR_HEIGHT, WIDTH, HEIGHT, WLL_HEIGHT, Back_Speed
-from assets import CHARACTER, ASTEROID, WALL, COIN
 
 class character(pygame.sprite.Sprite):
+    
     def __init__(self,groups,assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[CHARACTER]
+        self.image = assets["character"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = 10
@@ -15,6 +16,7 @@ class character(pygame.sprite.Sprite):
         self.speedy = 0
         self.groups = groups
         self.assets = assets
+        self.score = 0
     
     def update(self):
 
@@ -27,12 +29,18 @@ class character(pygame.sprite.Sprite):
         if self.rect.y < HEIGHT - CHAR_HEIGHT and self.speedy == 0:
             self.speedy = -3
     
+    def getScore(self):
+        return self.score
+    
+    def plusScore(self):
+        self.score += 1
+    
 
 class asteroid(pygame.sprite.Sprite):
     def __init__(self,groups,assets,rectt,speed):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[ASTEROID]
+        self.image = assets["asteroid"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = rectt
@@ -53,7 +61,7 @@ class wall(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[WALL]
+        self.image = assets["wall"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = random.randint(WLL_HEIGHT, HEIGHT - WLL_HEIGHT - 5)
@@ -76,7 +84,7 @@ class coin(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[COIN]
+        self.image = assets["coin"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = random.randint(WLL_HEIGHT + 5 , HEIGHT - WLL_HEIGHT - 5)

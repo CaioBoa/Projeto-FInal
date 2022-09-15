@@ -4,7 +4,7 @@ from config import IMG_DIR, BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT,SND_DIR
 from config import FNT_DIR
 from cursors import cursors
 
-def over_screen(screen,score):
+def over_screen(screen,player):
     clock = pygame.time.Clock()
     background = pygame.image.load(path.join(IMG_DIR,"Game Over.png")).convert()
     background = pygame.transform.scale(background,(WIDTH,HEIGHT))
@@ -20,6 +20,7 @@ def over_screen(screen,score):
 
     pygame.time.delay(1500)
     while running:
+        score = player.getScore()
         clock.tick(FPS)
         mouse = pygame.mouse.get_pos()
         if ButtomD[0] <= mouse[0] <= ButtomD[1] and ButtomD[2] <= mouse[1] <= ButtomD[3] or ButtomE[0] <= mouse[0] <= ButtomE[1] and ButtomE[2] <= mouse[1] <= ButtomE[3]:
