@@ -1,7 +1,7 @@
 import pygame
 from config import FPS, OVER, WIDTH, HEIGHT, BLACK, FNT_DIR, SND_DIR, Back_Speed
 from assets import load_assets
-from sprites import asteroid, character, wall, coin
+from sprites import Asteroid, Character, Wall, Coin
 from os import path
 from cursors import cursors
 
@@ -24,7 +24,7 @@ def game_screen(window):
     groups["all walls"] = all_walls
     groups["all coins"] = all_coins
 
-    player = character(groups, assets)
+    player = Character(groups, assets)
     all_sprites.add(player)
 
     #para gerar asteróides
@@ -71,17 +71,17 @@ def game_screen(window):
         coin_cd = 60
 
         if a == missile_cd:
-            astro = asteroid(groups,assets,player.rect.y,missile_speed)
+            astro = Asteroid(groups,assets,player.rect.y,missile_speed)
             all_sprites.add(astro)
             all_astros.add(astro)
             a = 0
         if w == wall_cd:
-            walll = wall (groups,assets)
+            walll = Wall (groups,assets)
             all_sprites.add(walll)
             all_walls.add(walll)
             w = 0  
         if c == coin_cd:
-            coinn = coin (groups,assets)
+            coinn = Coin (groups,assets)
             all_sprites.add(coinn)
             all_coins.add(coinn)
             c = 0 

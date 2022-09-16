@@ -3,7 +3,7 @@ from tkinter import scrolledtext
 import pygame
 from config import CHAR_HEIGHT, WIDTH, HEIGHT, WLL_HEIGHT, Back_Speed
 
-class character(pygame.sprite.Sprite):
+class Character(pygame.sprite.Sprite):
     
     def __init__(self,groups,assets):
         pygame.sprite.Sprite.__init__(self)
@@ -36,7 +36,7 @@ class character(pygame.sprite.Sprite):
         self.score += 1
     
 
-class asteroid(pygame.sprite.Sprite):
+class Asteroid(pygame.sprite.Sprite):
     def __init__(self,groups,assets,rectt,speed):
         pygame.sprite.Sprite.__init__(self)
 
@@ -57,7 +57,7 @@ class asteroid(pygame.sprite.Sprite):
         if self.rect.x < 0:
             self.kill()
 
-class wall(pygame.sprite.Sprite):
+class Wall(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
@@ -80,7 +80,7 @@ class wall(pygame.sprite.Sprite):
         if self.rect.x < 0:
             self.kill()
 
-class coin(pygame.sprite.Sprite):
+class Coin(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 

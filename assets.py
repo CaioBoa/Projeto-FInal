@@ -4,9 +4,9 @@ from os import path
 from config import CHAR_HEIGHT, CHAR_WIDTH, IMG_DIR, SND_DIR, WIDTH, HEIGHT, AST_WIDTH, AST_HEIGHT, WLL_WIDTH, WLL_HEIGHT, COIN_WIDTH, COIN_HEIGHT
 
 def load_assets():
+    # create dict to store assets
     assets = {}
-    
-    #sprites
+    # all image sprites
     assets["background"] = pygame.image.load(path.join(IMG_DIR,"f1_flo.png")).convert()
     assets["background"] = pygame.transform.scale(assets["background"],(WIDTH,HEIGHT))
     assets["background1"] = pygame.image.load(path.join(IMG_DIR,"f2_esp.png")).convert()
@@ -23,8 +23,7 @@ def load_assets():
     assets["wall"] = pygame.transform.scale(assets["wall"],(WLL_WIDTH,WLL_HEIGHT))
     assets["coin"] = pygame.image.load(path.join(IMG_DIR,"coin.png")).convert_alpha()
     assets["coin"] = pygame.transform.scale(assets["coin"],(COIN_WIDTH,COIN_HEIGHT))
-
-    #sounds
+    # all sound sprites
     assets["sound_dmg"] = pygame.mixer.Sound(path.join(SND_DIR,"Dano.mp3"))
     pygame.mixer.Sound.set_volume(assets["sound_dmg"],0.5)
     assets["sound_coin"] = pygame.mixer.Sound(path.join(SND_DIR,"coin.mp3"))
