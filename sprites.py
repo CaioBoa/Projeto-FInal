@@ -36,7 +36,7 @@ class Character(pygame.sprite.Sprite):
         self.score += 1
     
 
-class Asteroid(pygame.sprite.Sprite):
+class Asteroid (pygame.sprite.Sprite):
     def __init__(self,groups,assets,rectt,speed):
         pygame.sprite.Sprite.__init__(self)
 
