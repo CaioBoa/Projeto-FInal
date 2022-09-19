@@ -19,10 +19,8 @@ def game_screen(window):
     all_obstacles = pygame.sprite.Group()
     all_obstacles = pygame.sprite.Group()
     all_coins = pygame.sprite.Group()
-    groups = {}
-    groups['all_sprites'] = all_sprites
-    groups["all obstacles"] = all_obstacles
-    groups["all coins"] = all_coins
+    groups = {'all_sprites': all_sprites, "all obstacles": all_obstacles, "all coins": all_coins}
+
     # Create Player
     player = Character(groups, assets)
     all_sprites.add(player)
@@ -41,13 +39,14 @@ def game_screen(window):
     # Game State
     state = PLAYING
 
+    coin_cd = 60
     # ===== Loop principal =====
     while state != DONE:
         score = player.getScore()
         # Screen Settings
         font2 = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 34)
         guide = font2.render("Hold Space to fly", True, (255,255,0))
-        
+
         clock.tick(FPS)
 
         font2 = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 34)
@@ -63,47 +62,21 @@ def game_screen(window):
             missile_speed = 10
             missile_cd = 180
             wall_cd = 210
-            coin_cd = 60
             if music_setter == 0:
                 pygame.mixer.music.load(path.join(SND_DIR,"FORSDF.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        elif score >= 5:
+        else:
             Background = assets["background1"]
             missile_speed = 15
             missile_cd = 150
             wall_cd = 170
-            coin_cd = 60
             if music_setter == 1:
                 pygame.mixer.music.load(path.join(SND_DIR,"space.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        elif score >= 20:
-            Background = assets["background2"]
-            missile_speed = 20
-            missile_cd = 120
-            wall_cd = 130
-            coin_cd = 60
-            if music_setter == 2:
-                pygame.mixer.music.load(path.join(SND_DIR,"desert.mp3")) 
-                pygame.mixer.music.play()
-                pygame.mixer.music.set_volume(1)
-                music_setter += 1
-        elif score >= 100:
-            Background = assets["background3"]
-            window.blit(score_count, (WIDTH-700, 15))
-            missile_speed = 40
-            missile_cd = 60
-            wall_cd = 60
-            coin_cd = 60
-            if music_setter == 3:
-                pygame.mixer.music.load(path.join(SND_DIR,"pink_soldiers.mp3")) 
-                pygame.mixer.music.play()
-                pygame.mixer.music.set_volume(1)
-                music_setter = None
-
         # sprites timers
         missile_timer += 1
         wall_timer += 1
@@ -118,7 +91,7 @@ def game_screen(window):
             walll = Wall (groups,assets)
             all_sprites.add(walll)
             all_obstacles.add(walll)
-            wall_timer = 0  
+            wall_timer = 0
         if coin_timer == coin_cd:
             coinn = Coin (groups,assets)
             all_sprites.add(coinn)
@@ -138,12 +111,10 @@ def game_screen(window):
             if event.type == pygame.QUIT:
                 state = DONE
             if state == PLAYING:
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        player.speedy += 10
-                if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_SPACE:
-                        player.speedy -= 10
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    player.speedy += 10
+                if event.type == pygame.KEYUP and event.key == pygame.K_SPACE:
+                    player.speedy -= 10
 
         if state == PLAYING:
             hits_obstacle = pygame.sprite.spritecollide(player, all_obstacles, True, pygame.sprite.collide_mask)
@@ -163,14 +134,14 @@ def game_screen(window):
         all_sprites.update()
 
         window.fill(BLACK)
-            
+
         window.blit(Background, (Bx, 0))
         window.blit(Background, (Bx2, 0))
         if score < 10:
             window.blit(score_count, (WIDTH-500, 15))
-        elif score >= 10 and score < 100:
+        elif score < 100:
             window.blit(score_count, (WIDTH-560, 15))
-        elif score >= 100:
+        else:
             window.blit(score_count, (WIDTH-620, 15))
         if tutorial_timer <= 200:
             window.blit(guide, (WIDTH/2-100, HEIGHT/2-50))
@@ -180,5 +151,5 @@ def game_screen(window):
         pygame.display.update()
 
     if state == DONE:
-        
+
         return (OVER, player)
