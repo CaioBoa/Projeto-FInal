@@ -78,7 +78,7 @@ def game_screen(window):
                 music_setter += 1
         elif 50 < score < 100:
             Background = assets["background2"]
-            missile_speed = 20
+            missile_speed = 15
             missile_cd = 120
             wall_cd = 130
             if music_setter == 2:
@@ -102,7 +102,7 @@ def game_screen(window):
         coin_timer += 1
         # Missile Generator
         if missile_timer == missile_cd:
-            astro = Asteroid(groups,assets,player.rect.y,missile_speed)
+            astro = Asteroid (groups,assets,player.rect.y,missile_speed)
             all_sprites.add(astro)
             all_obstacles.add(astro)
             missile_timer = 0
