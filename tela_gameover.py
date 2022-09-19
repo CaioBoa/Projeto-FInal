@@ -48,9 +48,9 @@ def over_screen(screen,player):
         score_text = font.render("{0}".format(score), True, (0,0,0))
         if score < 10:
             screen.blit(score_text,(800,285))
-        elif score >= 10 and score < 100 :
+        elif score < 100:
             screen.blit(score_text,(700,285))
-        elif score >= 100:
+        else:
             screen.blit(score_text,(610,285))
         # Update Screen
         pygame.display.update()
