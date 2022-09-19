@@ -32,10 +32,9 @@ def init_screen(screen):
             if event.type == pygame.QUIT:
                 state = QUIT
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                 if ButtomD[0] <= mouse[0] <= ButtomD[1] and ButtomD[2] <= mouse[1] <= ButtomD[3]:
-                    state = GAME
-                    running = False
+            if event.type == pygame.MOUSEBUTTONDOWN and ButtomD[0] <= mouse[0] <= ButtomD[1] and ButtomD[2] <= mouse[1] <= ButtomD[3]:
+                state = GAME
+                running = False
         # Update Screen
         pygame.display.update()
 

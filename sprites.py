@@ -22,8 +22,7 @@ class Character(pygame.sprite.Sprite):
 
         self.rect.y -= self.speedy
 
-        if self.rect.y < 0:
-            self.rect.y = 0
+        self.rect.y = max(self.rect.y, 0)
         if self.rect.y > HEIGHT - CHAR_HEIGHT:
             self.rect.y = HEIGHT - CHAR_HEIGHT
         if self.rect.y < HEIGHT - CHAR_HEIGHT and self.speedy == 0:
