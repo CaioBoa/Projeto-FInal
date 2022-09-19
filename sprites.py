@@ -16,7 +16,7 @@ class Character(pygame.sprite.Sprite):
         self.speedy = 0
         self.groups = groups
         self.assets = assets
-        self.score = 0
+        self.score = 99
     
     def update(self):
 
