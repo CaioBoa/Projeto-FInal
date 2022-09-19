@@ -48,6 +48,8 @@ def game_screen(window):
         tutorial_timer += 1
         #Score Settings
         score = player.getScore()
+        font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 56)
+        score_count = font.render("Score = {0}".format(score), True, (0,255,255))
         # Mouse Settings
         mouse = pygame.mouse.get_pos()
         # Mouse Style Over Button
@@ -64,7 +66,6 @@ def game_screen(window):
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        # Game Phase 2
         elif 20 < score <= 50:
             Background = assets["background1"]
             missile_speed = 15
@@ -75,8 +76,7 @@ def game_screen(window):
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        # Game Phase 3
-        elif 50 < score <= 100:
+        elif 50 < score < 100:
             Background = assets["background2"]
             missile_speed = 20
             missile_cd = 120
@@ -86,8 +86,7 @@ def game_screen(window):
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        # Game Phase 4
-        elif score > 100:
+        else:
             Background = assets["background3"]
             missile_speed = 30
             missile_cd = 60
@@ -116,7 +115,7 @@ def game_screen(window):
             coinn = Coin (groups,assets)
             all_sprites.add(coinn)
             all_coins.add(coinn)
-            coin_timer = 0 
+            coin_timer = 0
         #Background Speed
         Bx -= Back_Speed
         Bx2 -= Back_Speed
@@ -144,10 +143,6 @@ def game_screen(window):
             if len(hits_coin) > 0:
                 player.plusScore()
                 coin_sound.play()
-
-        #contador de moedas
-        font = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 56)
-        score_count = font.render("Score = {0}".format(score), True, (0,255,255))
 
         all_sprites.update()
 
