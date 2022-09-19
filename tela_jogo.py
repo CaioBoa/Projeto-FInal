@@ -19,6 +19,10 @@ def game_screen(window):
     all_obstacles = pygame.sprite.Group()
     all_coins = pygame.sprite.Group()
     groups = {'all_sprites': all_sprites, "all obstacles": all_obstacles, "all coins": all_coins}
+<<<<<<< HEAD
+=======
+
+>>>>>>> de119278ccde9561153ca4782d59c87ac866458e
     # Create Player
     player = Character(groups, assets)
     all_sprites.add(player)
@@ -40,7 +44,15 @@ def game_screen(window):
     coin_cd = 60
     # ===== Loop principal =====
     while state != DONE:
+<<<<<<< HEAD
         # FPS Clock
+=======
+        score = player.getScore()
+        # Screen Settings
+        font2 = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 34)
+        guide = font2.render("Hold Space to fly", True, (255,255,0))
+
+>>>>>>> de119278ccde9561153ca4782d59c87ac866458e
         clock.tick(FPS)
         # Tutorial Guide
         font2 = pygame.font.Font(path.join(FNT_DIR,"ARCADE_N.TTF"), 34)
