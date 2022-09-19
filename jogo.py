@@ -4,25 +4,24 @@ from tela_inicial import init_screen
 from tela_jogo import game_screen
 from tela_gameover import over_screen
 
+# Init Pygame
 pygame.init()
+# Init Mixer
 pygame.mixer.init()
-
-
+# Init Screen
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Jogo')
-
 state = INIT
-score=0
+# Main Loop
 while state != QUIT: 
     if state == INIT:
-        state = init_screen(window)
-        
+        state = init_screen(window)    
     elif state == GAME:
         game_func = game_screen(window)
         state = game_func[0]
-        score = game_func[1]
+        player = game_func[1]
     elif state == OVER:
-        state = over_screen(window,score)
+        state = over_screen(window, player)
     else:
         state = QUIT
 

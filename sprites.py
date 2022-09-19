@@ -1,13 +1,20 @@
 import random
+from tkinter import scrolledtext
 import pygame
 from config import CHAR_HEIGHT, WIDTH, HEIGHT, WLL_HEIGHT, Back_Speed
-from assets import CHARACTER, ASTEROID, WALL, COIN
 
-class character(pygame.sprite.Sprite):
+def obstacle_movement(rect_x, speed, self):
+    rect_x -= speed
+    if rect_x < 0:
+        self.kill()
+    return rect_x
+
+class Character(pygame.sprite.Sprite):
+    
     def __init__(self,groups,assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[CHARACTER]
+        self.image = assets["character"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         self.rect.x = 10
@@ -15,24 +22,31 @@ class character(pygame.sprite.Sprite):
         self.speedy = 0
         self.groups = groups
         self.assets = assets
+        self.score = 00
+        
     
     def update(self):
 
         self.rect.y -= self.speedy
 
-        if self.rect.y < 0:
-            self.rect.y = 0
+        self.rect.y = max(self.rect.y, 0)
         if self.rect.y > HEIGHT - CHAR_HEIGHT:
             self.rect.y = HEIGHT - CHAR_HEIGHT
         if self.rect.y < HEIGHT - CHAR_HEIGHT and self.speedy == 0:
             self.speedy = -3
     
+    def getScore(self):
+        return self.score
+    
+    def plusScore(self):
+        self.score += 1
+    
 
-class asteroid(pygame.sprite.Sprite):
+class Asteroid (pygame.sprite.Sprite):
     def __init__(self,groups,assets,rectt,speed):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[ASTEROID]
+        self.image = assets["asteroid"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = rectt
@@ -49,11 +63,11 @@ class asteroid(pygame.sprite.Sprite):
         if self.rect.x < 0:
             self.kill()
 
-class wall(pygame.sprite.Sprite):
+class Wall(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[WALL]
+        self.image = assets["wall"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = random.randint(WLL_HEIGHT, HEIGHT - WLL_HEIGHT - 5)
@@ -67,16 +81,13 @@ class wall(pygame.sprite.Sprite):
         self.assets = assets
 
     def update(self):
-        self.rect.x -= self.speedx
+        self.rect.x = obstacle_movement(self.rect.x, self.speedx, self)
 
-        if self.rect.x < 0:
-            self.kill()
-
-class coin(pygame.sprite.Sprite):
+class Coin(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[COIN]
+        self.image = assets["coin"]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
         randomy = random.randint(WLL_HEIGHT + 5 , HEIGHT - WLL_HEIGHT - 5)
@@ -89,9 +100,6 @@ class coin(pygame.sprite.Sprite):
         self.assets = assets
 
     def update(self):
-        self.rect.x -= self.speedx
-
-        if self.rect.x < 0:
-            self.kill()
+        self.rect.x = obstacle_movement(self.rect.x, self.speedx, self)
 
 
