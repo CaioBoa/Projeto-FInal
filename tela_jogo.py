@@ -5,6 +5,31 @@ from sprites import Asteroid, Character, Wall, Coin
 from os import path
 from cursors import cursors
 
+def load_phase(phase):
+    if phase == 0:
+        Background = "background"
+        missile_speed = 10
+        missile_cd = 180
+        wall_cd = 210
+    elif phase == 1:
+        Background = "background1"
+        missile_speed = 15
+        missile_cd = 150
+        wall_cd = 170
+    elif phase == 2:
+        Background = "background2"
+        missile_speed = 20
+        missile_cd = 120
+        wall_cd = 130
+    elif phase == 3:
+        Background = "background3"
+        missile_speed = 25
+        missile_cd = 90
+        wall_cd = 90
+    return Background, missile_speed, missile_cd, wall_cd
+
+
+
 def game_screen(window):
     # Load Assets
     assets = load_assets()
@@ -56,46 +81,40 @@ def game_screen(window):
         if 0 < mouse[0] < WIDTH and 0 < mouse[1] < HEIGHT:
             pygame.mouse.set_cursor(cursors[2])
         # Game Phase 1
-        if score <= 20:
-            Background = assets["background"]
-            missile_speed = 10
-            missile_cd = 180
-            wall_cd = 210
+        if score < 20:
+            phase = load_phase(0)
             if music_setter == 0:
                 pygame.mixer.music.load(path.join(SND_DIR,"FORSDF.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        elif 20 < score <= 50:
-            Background = assets["background1"]
-            missile_speed = 15
-            missile_cd = 150
-            wall_cd = 170
+        elif 20 <= score < 50:
+            phase = load_phase(1)
             if music_setter == 1:
                 pygame.mixer.music.load(path.join(SND_DIR,"space.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
-        elif 50 < score < 100:
-            Background = assets["background2"]
-            missile_speed = 15
-            missile_cd = 120
-            wall_cd = 130
+        elif 50 <= score < 100:
+            phase = load_phase(2)
             if music_setter == 2:
                 pygame.mixer.music.load(path.join(SND_DIR,"desert.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
         else:
-            Background = assets["background3"]
-            missile_speed = 30
-            missile_cd = 60
-            wall_cd = 60
+            phase = load_phase(3)
             if music_setter == 4:
                 pygame.mixer.music.load(path.join(SND_DIR,"pink_soldiers.mp3")) 
                 pygame.mixer.music.play()
                 pygame.mixer.music.set_volume(1)
                 music_setter += 1
+        # Phase Data
+        Background = assets[phase[0]]
+        missile_speed = phase[1]
+        missile_cd = phase[2]
+        wall_cd = phase[3]
+
         # Sprites Timers
         missile_timer += 1
         wall_timer += 1

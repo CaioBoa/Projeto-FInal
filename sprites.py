@@ -3,6 +3,12 @@ from tkinter import scrolledtext
 import pygame
 from config import CHAR_HEIGHT, WIDTH, HEIGHT, WLL_HEIGHT, Back_Speed
 
+def obstacle_movement(rect_x, speed, self):
+    rect_x -= speed
+    if rect_x < 0:
+        self.kill()
+    return rect_x
+
 class Character(pygame.sprite.Sprite):
     
     def __init__(self,groups,assets):
@@ -16,7 +22,8 @@ class Character(pygame.sprite.Sprite):
         self.speedy = 0
         self.groups = groups
         self.assets = assets
-        self.score = 99
+        self.score = 00
+        
     
     def update(self):
 
@@ -74,10 +81,7 @@ class Wall(pygame.sprite.Sprite):
         self.assets = assets
 
     def update(self):
-        self.rect.x -= self.speedx
-
-        if self.rect.x < 0:
-            self.kill()
+        self.rect.x = obstacle_movement(self.rect.x, self.speedx, self)
 
 class Coin(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
@@ -96,9 +100,6 @@ class Coin(pygame.sprite.Sprite):
         self.assets = assets
 
     def update(self):
-        self.rect.x -= self.speedx
-
-        if self.rect.x < 0:
-            self.kill()
+        self.rect.x = obstacle_movement(self.rect.x, self.speedx, self)
 
 
